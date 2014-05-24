@@ -18,18 +18,17 @@ makeCacheMatrix <- function(x = matrix()) { #
              getinverse = getinverse)
 }
 
-#
 cacheSolve <- function(x, ...) {
         m <- x$getinverse()
         if(!is.null(m)) {
                 message("getting cached data") #prints "getting cached data" 
-							     #if inverse previously computed 
-							     #and cached
+					       #if inverse previously computed 
+				               #and cached
                 return(m) #returns inverse matrix if previously computed and 
 				  #cached
         }
         data <- x$get()#retrieves matrix
-        m <- solve(data, ...) #if not previously computed and changed, computes inverse
+        m <- solve(data, ...) #if not previously computed and cached, computes inverse
         x$setinverse(m)
-        m #print inverse matrix
+        m #prints inverse matrix
 }
